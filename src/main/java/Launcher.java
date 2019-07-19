@@ -11,13 +11,13 @@ public class Launcher {
 
         Random r = new Random();
         int low = 0;
-        int high = 1001;
+        int high = 101;
 
         for(int s = 1; s <=25; s++) {
 
             Map<String,Integer> pointMap = new HashMap<>();
 
-            for(int i = 0; i < 1000000000; i++) {
+            for(int i = 0; i < 10000000; i++) {
 
                 //int x = r.nextInt(high-low) + low;
                 //int y = r.nextInt(high-low) + low;
@@ -34,9 +34,9 @@ public class Launcher {
 
             }
 
-            for(int y = 1; y <= 1000; y++) {
+            for(int y = 1; y <= 100; y++) {
 
-                for (int x = 1; x <= 1000; x++) {
+                for (int x = 1; x <= 100; x++) {
 
                     int result = 0;
                     String point = x + "," + y;
