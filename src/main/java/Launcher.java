@@ -13,7 +13,7 @@ public class Launcher {
         int low = 0;
         int high = 101;
 
-        for(int s = 1; s <=2; s++) {
+        for(int s = 1; s <=100; s++) {
 
             Map<String,Integer> pointMap = new HashMap<>();
 
@@ -22,8 +22,8 @@ public class Launcher {
 
                 //int x = r.nextInt(high-low) + low;
                 //int y = r.nextInt(high-low) + low;
-                int x = r.nextInt(high-low) + low;
-                int y = r.nextInt(high-low) + low;
+                int x = r.nextInt(high-low) + s;
+                int y = r.nextInt(high-low) + s;
 
                 String point = x + "," + y;
 
