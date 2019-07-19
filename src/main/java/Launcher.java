@@ -12,12 +12,15 @@ public class Launcher {
         System.out.println("height,x,y,set");
 
         for(int s = 1; s <=25; s++) {
-            for (int y = 1; y <= 61; y++) {
+            for (int y = 1; y <= 100; y++) {
 
-                for (int x = 1; x <= 87; x++) {
+                for (int x = 1; x <= 100; x++) {
+
                     //int result = r.nextInt(high - low) + low;
+                    int result = r.nextInt(100 - y) + y;
 
-                    System.out.println((x + y) + "," + x + "," + y + "," + s);
+
+                    System.out.println(result + "," + x + "," + y + "," + s);
                 }
 
             }
