@@ -33,7 +33,7 @@ class RandomCalc implements Runnable {
 
         Map<String,Integer> pointMap = new HashMap<>();
 
-        for(int i = 0; i < 100000; i++) {
+        for(int i = 0; i < 1000000; i++) {
 
             //X
             if(r.nextInt(10000) == 10000) {

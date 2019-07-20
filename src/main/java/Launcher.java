@@ -24,12 +24,12 @@ public class Launcher {
         System.out.println("height,x,y,set");
 
 
-        for(int s = 1; s <=10; s++) {
+        for(int s = 1; s <=100; s++) {
 
             try {
 
                 ExecutorService es = Executors.newCachedThreadPool();
-                for (int i = 0; i < 80; i++)
+                for (int i = 0; i < 100; i++)
                     es.execute(new RandomCalc(i));
                 es.shutdown();
 
