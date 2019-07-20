@@ -30,8 +30,14 @@ public class Launcher {
                 ExecutorService es = Executors.newCachedThreadPool();
                 for (int i = 0; i < 40; i++)
                     es.execute(new RandomCalc(i));
+                    Thread.sleep(100);
                 es.shutdown();
-                boolean finished = es.awaitTermination(1, TimeUnit.MINUTES);
+
+
+                //boolean finished = es.awaitTermination(1, TimeUnit.MINUTES);
+                while (!es.isTerminated()) {
+                    Thread.sleep(1000);
+                }
 
             } catch (Exception ex) {
                 ex.printStackTrace();
