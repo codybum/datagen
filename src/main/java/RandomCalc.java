@@ -28,7 +28,7 @@ class RandomCalc implements Runnable {
 
         Random r = new Random();
         int low = 0;
-        int high = 1001;
+        int high = 251;
 
 
         Map<String,Integer> pointMap = new HashMap<>();
