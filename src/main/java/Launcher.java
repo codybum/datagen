@@ -70,7 +70,7 @@ public class Launcher {
                 String key = entry.getKey();
                 Integer result = entry.getValue();
 
-                System.out.println(result + "," + key + "," + s);
+                //System.out.println(result + "," + key + "," + s);
             }
 
             /*

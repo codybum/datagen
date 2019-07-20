@@ -38,11 +38,13 @@ class RandomCalc implements Runnable {
             //X
             if(r.nextInt(10000) == 10000) {
                this.modifierx++;
+               System.out.println("X TRIGGER " + id + " MX: " + modifierx);
             }
 
             //Y
             if(r.nextInt(10000) == 10000) {
                 this.modifiery++;
+                System.out.println("Y TRIGGER " + id + " MY: " + modifiery);
             }
 
             int x = r.nextInt(high-low) + modifierx;
