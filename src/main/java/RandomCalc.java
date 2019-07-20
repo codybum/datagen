@@ -36,13 +36,13 @@ class RandomCalc implements Runnable {
         for(int i = 0; i < 1000000; i++) {
 
             //X
-            if(r.nextInt(100000) == 5000) {
+            if(r.nextInt(1000000) == 5000) {
                this.modifierx++;
                //System.out.println("X TRIGGER " + id + " MX: " + modifierx);
             }
 
             //Y
-            if(r.nextInt(100000) == 5000) {
+            if(r.nextInt(1000000) == 5000) {
                 this.modifiery++;
                 //System.out.println("Y TRIGGER " + id + " MY: " + modifiery);
             }
