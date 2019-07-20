@@ -4,7 +4,7 @@ import java.util.Random;
 
 class RandomCalc implements Runnable {
     public void run() {
-        System.out.println("thread is running...");
+        //System.out.println("thread is running...");
 
         Random r = new Random();
         int low = 0;
