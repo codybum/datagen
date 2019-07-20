@@ -48,12 +48,12 @@ class RandomCalc implements Runnable {
             }
 
             int x = r.nextInt(high-low) + modifierx;
-            if(x > 250) {
-                x = 250;
+            if(x > 500) {
+                x = 500;
             }
             int y = r.nextInt(high-low) + modifiery;
-            if(y > 250) {
-                y = 250;
+            if(y > 500) {
+                y = 500;
             }
 
             String point = x + "," + y;
