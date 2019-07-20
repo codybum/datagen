@@ -18,7 +18,7 @@ class RandomCalc implements Runnable {
             }
 
             if(Launcher.lockModifierMapY.containsKey(id)) {
-                this.modifierx = Launcher.lockModifierMapY.get(id);
+                this.modifiery = Launcher.lockModifierMapY.get(id);
             }
         }
     }
@@ -38,13 +38,13 @@ class RandomCalc implements Runnable {
             //X
             if(r.nextInt(10000) == 5000) {
                this.modifierx++;
-               System.out.println("X TRIGGER " + id + " MX: " + modifierx);
+               //System.out.println("X TRIGGER " + id + " MX: " + modifierx);
             }
 
             //Y
             if(r.nextInt(10000) == 5000) {
                 this.modifiery++;
-                System.out.println("Y TRIGGER " + id + " MY: " + modifiery);
+                //System.out.println("Y TRIGGER " + id + " MY: " + modifiery);
             }
 
             int x = r.nextInt(high-low) + modifierx;

@@ -24,7 +24,7 @@ public class Launcher {
         System.out.println("height,x,y,set");
 
 
-        for(int s = 1; s <=100; s++) {
+        for(int s = 1; s <=25; s++) {
 
             try {
 
@@ -70,7 +70,7 @@ public class Launcher {
                 String key = entry.getKey();
                 Integer result = entry.getValue();
 
-                //System.out.println(result + "," + key + "," + s);
+                System.out.println(result + "," + key + "," + s);
             }
 
             /*
