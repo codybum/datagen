@@ -24,12 +24,9 @@ public class Launcher {
         System.out.println("height,x,y,set");
 
 
-        for(int s = 1; s <=25; s++) {
+        for(int s = 1; s <=10; s++) {
 
-            System.out.println("START S=" + s);
             try {
-
-                System.out.println("STARTING 1000 Threads");
 
                 ExecutorService es = Executors.newCachedThreadPool();
                 for (int i = 0; i < 1000; i++)
@@ -45,16 +42,29 @@ public class Launcher {
 
                 while(!pointQueue.isEmpty()) {
                     Map<String,Integer> pointMap = pointQueue.poll();
-                    System.out.println("WOOT MAP");
+
+                    for (Map.Entry<String, Integer> entry : pointMap.entrySet()) {
+
+                        String key = entry.getKey();
+                        Integer value = entry.getValue();
+
+                        //System.out.println(key + " " + value);
+                        synchronized (Launcher.lockPointMap) {
+                            if(Launcher.pointMap.containsKey(key)) {
+                                Launcher.pointMap.put(key,Launcher.pointMap.get(key)+value);
+                            } else {
+                                Launcher.pointMap.put(key,value);
+                            }
+                        }
+                    }
+
                 }
 
-                System.out.println("ENDED 1000 Threads");
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
-            System.out.println("STARTING PRINTOUT");
             for(int y = 1; y <= 1000; y++) {
 
                 for (int x = 1; x <= 1000; x++) {
@@ -64,11 +74,10 @@ public class Launcher {
                     if(pointMap.containsKey(point)) {
                         result = pointMap.get(point);
                     }
-                        //System.out.println(result + "," + x + "," + y + "," + s);
+                        System.out.println(result + "," + x + "," + y + "," + s);
                 }
 
             }
-            System.out.println("ENDING PRINTOUT");
 
             pointMap.clear();
 
@@ -79,7 +88,7 @@ public class Launcher {
                 System.out.println(value + "," + key + "," + s);
             }
             */
-            System.out.println("END S=" + s);
+
         }
 
     }

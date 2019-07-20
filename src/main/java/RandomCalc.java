@@ -31,8 +31,6 @@ class RandomCalc implements Runnable {
         int high = 1001;
 
 
-        System.out.println("pointMap Start ID: " + id);
-
         Map<String,Integer> pointMap = new HashMap<>();
 
         for(int i = 0; i < 100000; i++) {
@@ -60,17 +58,10 @@ class RandomCalc implements Runnable {
 
         }
 
-        System.out.println("pointMap END ID: " + id);
-
-
-        System.out.println("LOCK X Y ID: " + id);
-
         synchronized (Launcher.lockModifier) {
             Launcher.lockModifierMapX.put(id,modifierx);
             Launcher.lockModifierMapY.put(id,modifiery);
         }
-
-        System.out.println("SCAN ID: " + id);
 
         synchronized (Launcher.pointQueueLock) {
             Launcher.pointQueue.offer(pointMap);
