@@ -27,7 +27,7 @@ public class Launcher {
 
             try {
                 ExecutorService es = Executors.newCachedThreadPool();
-                for (int i = 0; i < 80; i++)
+                for (int i = 0; i < 100; i++)
                     es.execute(new RandomCalc());
                 es.shutdown();
                 boolean finished = es.awaitTermination(1, TimeUnit.MINUTES);
