@@ -29,9 +29,8 @@ public class Launcher {
             try {
 
                 ExecutorService es = Executors.newCachedThreadPool();
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 80; i++)
                     es.execute(new RandomCalc(i));
-                    Thread.sleep(100);
                 es.shutdown();
 
 
@@ -41,21 +40,22 @@ public class Launcher {
                 }
 
                 while(!pointQueue.isEmpty()) {
-                    Map<String,Integer> pointMap = pointQueue.poll();
 
-                    for (Map.Entry<String, Integer> entry : pointMap.entrySet()) {
+                    Map<String,Integer> tmpPointMap = pointQueue.poll();
+
+                    for (Map.Entry<String, Integer> entry : tmpPointMap.entrySet()) {
 
                         String key = entry.getKey();
                         Integer value = entry.getValue();
 
                         //System.out.println(key + " " + value);
-                        synchronized (Launcher.lockPointMap) {
-                            if(Launcher.pointMap.containsKey(key)) {
-                                Launcher.pointMap.put(key,Launcher.pointMap.get(key)+value);
+                        //synchronized (Launcher.lockPointMap) {
+                            if(pointMap.containsKey(key)) {
+                                pointMap.put(key,pointMap.get(key)+value);
                             } else {
-                                Launcher.pointMap.put(key,value);
+                                pointMap.put(key,value);
                             }
-                        }
+                        //}
                     }
 
                 }
@@ -65,9 +65,18 @@ public class Launcher {
                 ex.printStackTrace();
             }
 
-            for(int y = 1; y <= 1000; y++) {
+            for (Map.Entry<String, Integer> entry : pointMap.entrySet()) {
 
-                for (int x = 1; x <= 1000; x++) {
+                String key = entry.getKey();
+                Integer result = entry.getValue();
+
+                System.out.println(result + "," + key + "," + s);
+            }
+
+            /*
+            for(int y = 1; y <= 100; y++) {
+
+                for (int x = 1; x <= 100; x++) {
 
                     int result = 0;
                     String point = x + "," + y;
@@ -78,6 +87,7 @@ public class Launcher {
                 }
 
             }
+            */
 
             pointMap.clear();
 
