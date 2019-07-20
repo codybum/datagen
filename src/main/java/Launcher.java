@@ -15,7 +15,8 @@ public class Launcher {
 
     public static AtomicBoolean lockModifier = new AtomicBoolean();
 
-    public static Integer modifier = 0;
+    public static Map<Integer,Integer> lockModifierMapX = Collections.synchronizedMap(new HashMap<>());
+    public static Map<Integer,Integer> lockModifierMapY = Collections.synchronizedMap(new HashMap<>());
 
 
     public static void main(String args[]) {
@@ -23,12 +24,12 @@ public class Launcher {
         System.out.println("height,x,y,set");
 
 
-        for(int s = 1; s <=100; s++) {
+        for(int s = 1; s <=25; s++) {
 
             try {
                 ExecutorService es = Executors.newCachedThreadPool();
                 for (int i = 0; i < 40; i++)
-                    es.execute(new RandomCalc());
+                    es.execute(new RandomCalc(i));
                 es.shutdown();
                 boolean finished = es.awaitTermination(1, TimeUnit.MINUTES);
 

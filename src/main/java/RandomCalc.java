@@ -3,6 +3,26 @@ import java.util.Map;
 import java.util.Random;
 
 class RandomCalc implements Runnable {
+
+    private int id;
+    private int modifierx = 0;
+    private int modifiery = 0;
+
+
+    public RandomCalc(int id) {
+        this.id = id;
+
+        synchronized (Launcher.lockModifier) {
+            if(Launcher.lockModifierMapX.containsKey(id)) {
+                this.modifierx = Launcher.lockModifierMapX.get(id);
+            }
+
+            if(Launcher.lockModifierMapY.containsKey(id)) {
+                this.modifierx = Launcher.lockModifierMapY.get(id);
+            }
+        }
+    }
+
     public void run() {
         //System.out.println("thread is running...");
 
@@ -15,8 +35,18 @@ class RandomCalc implements Runnable {
 
         for(int i = 0; i < 1000000; i++) {
 
-            int x = r.nextInt(high-low) + Launcher.modifier;
-            int y = r.nextInt(high-low) + Launcher.modifier;
+            //X
+            if(r.nextInt(10000) == 100000) {
+               this.modifierx++;
+            }
+
+            //Y
+            if(r.nextInt(10000) == 100000) {
+                this.modifiery++;
+            }
+
+            int x = r.nextInt(high-low) + modifierx;
+            int y = r.nextInt(high-low) + modifiery;
 
             String point = x + "," + y;
 
@@ -26,6 +56,11 @@ class RandomCalc implements Runnable {
                 pointMap.put(point,1);
             }
 
+        }
+
+        synchronized (Launcher.lockModifier) {
+            Launcher.lockModifierMapX.put(id,modifierx);
+            Launcher.lockModifierMapY.put(id,modifiery);
         }
 
 
