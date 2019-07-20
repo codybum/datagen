@@ -27,7 +27,7 @@ public class Launcher {
 
             try {
                 ExecutorService es = Executors.newCachedThreadPool();
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 40; i++)
                     es.execute(new RandomCalc());
                 es.shutdown();
                 boolean finished = es.awaitTermination(1, TimeUnit.MINUTES);
@@ -50,6 +50,8 @@ public class Launcher {
                 }
 
             }
+
+            pointMap.clear();
 
             /*
             for (Map.Entry<String, Integer> entry : pointMap.entrySet()) {
