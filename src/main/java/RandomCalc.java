@@ -78,7 +78,7 @@ class RandomCalc implements Runnable {
             Integer value = entry.getValue();
 
             //System.out.println(key + " " + value);
-
+            System.out.println("LOCKED ID: " + id);
             synchronized (Launcher.lockPointMap) {
                 if(Launcher.pointMap.containsKey(key)) {
                     Launcher.pointMap.put(key,Launcher.pointMap.get(key)+value);
@@ -86,6 +86,7 @@ class RandomCalc implements Runnable {
                     Launcher.pointMap.put(key,value);
                 }
             }
+            System.out.println("UNLOCKED ID: " + id);
         }
 
 
