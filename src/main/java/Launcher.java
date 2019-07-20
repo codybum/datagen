@@ -1,43 +1,45 @@
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Launcher {
+
+    public static Map<String,Integer> pointMap = Collections.synchronizedMap(new HashMap<>());
+
+    public static AtomicBoolean lockPointMap = new AtomicBoolean();
+
+    public static AtomicBoolean lockModifier = new AtomicBoolean();
+
+    public static Integer modifier = 0;
 
 
     public static void main(String args[]) {
 
         System.out.println("height,x,y,set");
 
-        Random r = new Random();
-        int low = 0;
-        int high = 1000;
 
-        for(int s = 1; s <=1000; s++) {
+        for(int s = 1; s <=100; s++) {
 
-            Map<String,Integer> pointMap = new HashMap<>();
+            try {
+                ExecutorService es = Executors.newCachedThreadPool();
+                for (int i = 0; i < 40; i++)
+                    es.execute(new RandomCalc());
+                es.shutdown();
+                boolean finished = es.awaitTermination(1, TimeUnit.MINUTES);
 
-            for(int i = 0; i < 10000000; i++) {
-            //for(int i = 0; i < 10000; i++) {
-
-                //int x = r.nextInt(high-low) + low;
-                //int y = r.nextInt(high-low) + low;
-                int x = r.nextInt(high-low) + s;
-                int y = r.nextInt(high-low) + s;
-
-                String point = x + "," + y;
-
-                if(pointMap.containsKey(point)) {
-                    pointMap.put(point,pointMap.get(point) + 1);
-                } else {
-                    pointMap.put(point,1);
-                }
-
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
 
-            for(int y = 1; y <= 1000; y++) {
 
-                for (int x = 1; x <= 1000; x++) {
+            for(int y = 1; y <= 100; y++) {
+
+                for (int x = 1; x <= 100; x++) {
 
                     int result = 0;
                     String point = x + "," + y;
@@ -57,10 +59,7 @@ public class Launcher {
             }
             */
 
-
-
         }
-
 
     }
 }
