@@ -72,6 +72,11 @@ class RandomCalc implements Runnable {
 
         System.out.println("SCAN ID: " + id);
 
+        synchronized (Launcher.pointQueueLock) {
+            Launcher.pointQueue.offer(pointMap);
+        }
+
+        /*
         for (Map.Entry<String, Integer> entry : pointMap.entrySet()) {
 
             String key = entry.getKey();
@@ -88,6 +93,7 @@ class RandomCalc implements Runnable {
             }
             System.out.println("UNLOCKED ID: " + id);
         }
+        */
 
 
     }

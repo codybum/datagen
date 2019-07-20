@@ -2,9 +2,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Launcher {
@@ -18,6 +16,8 @@ public class Launcher {
     public static Map<Integer,Integer> lockModifierMapX = Collections.synchronizedMap(new HashMap<>());
     public static Map<Integer,Integer> lockModifierMapY = Collections.synchronizedMap(new HashMap<>());
 
+    public static AtomicBoolean pointQueueLock = new AtomicBoolean();
+    public static BlockingQueue<Map<String,Integer>> pointQueue = new LinkedBlockingQueue<>();
 
     public static void main(String args[]) {
 
@@ -41,6 +41,11 @@ public class Launcher {
                 //boolean finished = es.awaitTermination(1, TimeUnit.MINUTES);
                 while (!es.isTerminated()) {
                     Thread.sleep(1000);
+                }
+
+                while(!pointQueue.isEmpty()) {
+                    Map<String,Integer> pointMap = pointQueue.poll();
+                    System.out.println("WOOT MAP");
                 }
 
                 System.out.println("ENDED 1000 Threads");
