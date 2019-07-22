@@ -48,16 +48,16 @@ class RandomCalc implements Runnable {
 
         //Map<String,Integer> pointMap = new HashMap<>();
 
-        for(int i = 0; i < 10000000; i++) {
+        for(int i = 0; i < 1000000; i++) {
 
             //X
-            if(r.nextInt(100000000) == 500) {
+            if(r.nextInt(10000000) == 500) {
                this.modifierx++;
                //System.out.println("X");
             }
 
             //X
-            if(r.nextInt(100000000) == 500) {
+            if(r.nextInt(10000000) == 500) {
                 this.modifiery++;
                 //System.out.println("Y");
             }
