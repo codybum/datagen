@@ -71,6 +71,7 @@ public class Launcher {
             }
 
 
+            /*
             for (Map.Entry<String, Integer> entry : pointMap.entrySet()) {
 
                 String key = entry.getKey();
@@ -78,7 +79,7 @@ public class Launcher {
 
                 System.out.println(result + "," + key + "," + s);
             }
-
+            */
 
 
 
