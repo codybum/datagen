@@ -28,7 +28,7 @@ class RandomCalc implements Runnable {
 
         Random r = new Random();
         int low = 0;
-        int high = 501;
+        int high = 251;
 
 
         Map<String,Integer> pointMap = new HashMap<>();
@@ -50,12 +50,12 @@ class RandomCalc implements Runnable {
             //}
 
             int x = r.nextInt(high-low) + modifierx;
-            if(x > 500) {
-                x = 500;
+            if(x > 250) {
+                x = 250;
             }
             int y = r.nextInt(high-low) + modifiery;
-            if(y > 500) {
-                y = 500;
+            if(y > 250) {
+                y = 250;
             }
 
             String point = x + "," + y;
