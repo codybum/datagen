@@ -93,7 +93,7 @@ class RandomCalc implements Runnable {
         }
 
         synchronized (Launcher.lockProcessorsPointMap) {
-            //Launcher.processorsPointMap.put(id,pointMap);
+            Launcher.processorsPointMap.put(id,pointMap);
         }
 
         synchronized (Launcher.lockModifier) {
