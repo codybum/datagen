@@ -66,6 +66,7 @@ public class Launcher {
                 ex.printStackTrace();
             }
 
+            /*
             for (Map.Entry<String, Integer> entry : pointMap.entrySet()) {
 
                 String key = entry.getKey();
@@ -73,12 +74,13 @@ public class Launcher {
 
                 System.out.println(result + "," + key + "," + s);
             }
+            */
 
 
-            /*
-            for(int y = 1; y <= 100; y++) {
 
-                for (int x = 1; x <= 100; x++) {
+            for(int y = 1; y <= 500; y++) {
+
+                for (int x = 1; x <= 500; x++) {
 
                     int result = 0;
                     String point = x + "," + y;
@@ -89,7 +91,7 @@ public class Launcher {
                 }
 
             }
-            */
+
 
             pointMap.clear();
 
