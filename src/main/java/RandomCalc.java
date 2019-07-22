@@ -43,7 +43,7 @@ class RandomCalc implements Runnable {
 
         Random r = new Random();
         int low = 0;
-        int high = 101;
+        int high = 25;
 
 
         //Map<String,Integer> pointMap = new HashMap<>();
@@ -64,13 +64,13 @@ class RandomCalc implements Runnable {
                 //System.out.println("Y TRIGGER " + id + " MY: " + modifiery);
             //}
 
-            int x = r.nextInt(high-low) + modifierx;
-            if(x > 100) {
-                x = 100;
+            int x = r.nextInt(high) + 1 + modifierx;
+            if(x > 25) {
+                x = 25;
             }
-            int y = r.nextInt(high-low) + modifiery;
-            if(y > 100) {
-                y = 100;
+            int y = r.nextInt(high) + 1 + modifiery;
+            if(y > 25) {
+                y = 25;
             }
 
             String point = x + "," + y;

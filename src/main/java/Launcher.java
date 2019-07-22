@@ -24,34 +24,6 @@ public class Launcher {
 
     public static void main(String args[]) {
 
-//public SigmoidBiasedDistribution(int min, int max, double minsigmoidscalefactor, double maxsidmoidscalefactor, double maxoffsetfactor) {
-
-
-        /*
-        try {
-            SigmoidBiasedDistribution sbd = new SigmoidBiasedDistribution(0, 100,  0, 1.0, 0.0);
-            int[] pts = sbd.getPoints(100);
-            for (int i = 0; i < pts.length; i++) {
-                System.out.println(pts[i]);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        */
-
-        WeightedRandomGenerator wrg = new WeightedRandomGenerator(1, 100, 2, 0.95);
-
-        int count = 0;
-
-        for(int i = 0; i < 1000; i++) {
-            if(wrg.nextInt() >= 50) {
-                count++;
-            }
-        }
-
-        System.out.println(count);
-
-        System.exit(0);
 
         System.out.println("height,x,y,set");
 
@@ -110,9 +82,9 @@ public class Launcher {
 
 
 
-            for(int y = 1; y <= 100; y++) {
+            for(int y = 1; y <= 25; y++) {
 
-                for (int x = 1; x <= 100; x++) {
+                for (int x = 1; x <= 25; x++) {
 
                     int result = 0;
                     String point = x + "," + y;
