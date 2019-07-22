@@ -28,7 +28,7 @@ public class Launcher {
         System.out.println("height,x,y,set");
 
 
-        for(int s = 1; s <=10; s++) {
+        for(int s = 1; s <=20; s++) {
 
             try {
 
