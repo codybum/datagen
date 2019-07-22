@@ -51,12 +51,12 @@ class RandomCalc implements Runnable {
         for(int i = 0; i < 10000; i++) {
 
             //X
-            if(r.nextInt(10000) == 500) {
+            if(r.nextInt(100000) == 500) {
                this.modifierx++;
             }
 
             //X
-            if(r.nextInt(10000) == 500) {
+            if(r.nextInt(100000) == 500) {
                 this.modifiery++;
             }
 
