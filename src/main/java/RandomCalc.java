@@ -51,18 +51,20 @@ class RandomCalc implements Runnable {
         for(int i = 0; i < 10000; i++) {
 
             //X
-            if(r.nextInt(1000000) == 500) {
+            if(r.nextInt(10000000) == 500) {
                this.modifierx++;
+               //System.out.println("X");
             }
 
             //X
-            if(r.nextInt(1000000) == 500) {
+            if(r.nextInt(10000000) == 500) {
                 this.modifiery++;
+                //System.out.println("Y");
             }
 
 
             int x = r.nextInt(high) + 1;
-            if(x < mid) {
+            if((x < mid) && (this.modifierx > 0)) {
 
                 for(int xx=0; xx <= this.modifierx; xx++) {
                     x = r.nextInt(high) + 1;
@@ -73,7 +75,7 @@ class RandomCalc implements Runnable {
             }
 
             int y = r.nextInt(high) + 1;
-            if(y < mid) {
+            if((y < mid) && (this.modifiery > 0)) {
 
                 for(int yy=0; yy <= this.modifiery; yy++) {
                     y = r.nextInt(high) + 1;
