@@ -81,9 +81,9 @@ public class Launcher {
 
 
 
-            for(int y = 1; y <= 250; y++) {
+            for(int y = 1; y <= 100; y++) {
 
-                for (int x = 1; x <= 250; x++) {
+                for (int x = 1; x <= 100; x++) {
 
                     int result = 0;
                     String point = x + "," + y;
