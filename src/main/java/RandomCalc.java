@@ -1,3 +1,5 @@
+import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -38,6 +40,62 @@ class RandomCalc implements Runnable {
 
     }
 
+    public void run() {
+
+
+
+        int[] numsToGenerate = new int[100];
+        for(int i = 0; i < 100; i++) {
+            numsToGenerate[i] = i + 1;
+        }
+
+        double[] discreteProbabilities = new double[100];
+        for(int i = 0; i < 100; i++) {
+            discreteProbabilities[i] = 0.1;
+        }
+
+        //discreteProbabilities[99] = 1.0;
+
+        System.out.println(numsToGenerate[99]);
+        System.out.println(discreteProbabilities[99]);
+
+        EnumeratedIntegerDistribution distribution =
+                new EnumeratedIntegerDistribution(numsToGenerate, discreteProbabilities);
+
+        int numSamples = 1000000;
+        int[] x = distribution.sample(numSamples);
+        int[] y = distribution.sample(numSamples);
+
+        for(int i = 0; i < y.length; i++) {
+
+
+            String point = x[i] + "," + y[i];
+
+            if(pointMap.containsKey(point)) {
+                pointMap.put(point,pointMap.get(point) + 1);
+            } else {
+                pointMap.put(point,1);
+            }
+
+        }
+
+        synchronized (Launcher.lockProcessorsPointMap) {
+            //Launcher.processorsPointMap.put(id,pointMap);
+        }
+
+        synchronized (Launcher.lockModifier) {
+            Launcher.lockModifierMapX.put(id,modifierx);
+            Launcher.lockModifierMapY.put(id,modifiery);
+        }
+
+        synchronized (Launcher.pointQueueLock) {
+            Launcher.pointQueue.offer(pointMap);
+        }
+
+
+
+    }
+/*
     public void run() {
         //System.out.println("thread is running...");
 
@@ -111,4 +169,5 @@ class RandomCalc implements Runnable {
 
 
     }
+*/
 }

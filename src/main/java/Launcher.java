@@ -1,6 +1,9 @@
+import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -22,13 +25,16 @@ public class Launcher {
     public static AtomicBoolean pointQueueLock = new AtomicBoolean();
     public static BlockingQueue<Map<String,Integer>> pointQueue = new LinkedBlockingQueue<>();
 
-    public static void main(String args[]) {
+    public static Random rand = new Random();
 
+
+
+    public static void main(String args[]) {
 
         System.out.println("height,x,y,set");
 
 
-        for(int s = 1; s <=20; s++) {
+        for(int s = 1; s <=10; s++) {
 
             try {
 
