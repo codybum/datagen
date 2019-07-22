@@ -61,9 +61,26 @@ class RandomCalc implements Runnable {
 
 
             int x = r.nextInt(high) + 1;
+            if(x < 50) {
+
+                for(int xx=0; xx <= this.modifierx; xx++) {
+                    x = r.nextInt(high) + 1;
+                    if(x >= 50) {
+                        xx = this.modifierx;
+                    }
+                }
+            }
 
             int y = r.nextInt(high) + 1;
+            if(y < 50) {
 
+                for(int yy=0; yy <= this.modifiery; yy++) {
+                    y = r.nextInt(high) + 1;
+                    if(y >= 50) {
+                        yy = this.modifiery;
+                    }
+                }
+            }
 
             String point = x + "," + y;
 
