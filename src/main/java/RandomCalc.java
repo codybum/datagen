@@ -33,19 +33,21 @@ class RandomCalc implements Runnable {
 
         Map<String,Integer> pointMap = new HashMap<>();
 
-        for(int i = 0; i < 1000000; i++) {
+        for(int i = 0; i < 10000; i++) {
 
             //X
-            if(r.nextInt(100000000) == 5000) {
+            if(r.nextInt(1000) == 500) {
+                //if(r.nextInt(100000000) == 5000) {
                this.modifierx++;
+               this.modifiery++;
                //System.out.println("X TRIGGER " + id + " MX: " + modifierx);
             }
 
             //Y
-            if(r.nextInt(100000000) == 5000) {
-                this.modifiery++;
+            //if(r.nextInt(100000000) == 5000) {
+              //  this.modifiery++;
                 //System.out.println("Y TRIGGER " + id + " MY: " + modifiery);
-            }
+            //}
 
             int x = r.nextInt(high-low) + modifierx;
             if(x > 500) {
