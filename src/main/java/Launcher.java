@@ -1,7 +1,6 @@
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -9,9 +8,13 @@ public class Launcher {
 
     public static Map<String,Integer> pointMap = Collections.synchronizedMap(new HashMap<>());
 
-    public static AtomicBoolean lockPointMap = new AtomicBoolean();
+    public static Map<Integer,Map<String,Integer>> processorsPointMap = Collections.synchronizedMap(new HashMap<>());
 
+    public static AtomicBoolean lockProcessorsPointMap = new AtomicBoolean();
+    public static AtomicBoolean lockPointMap = new AtomicBoolean();
     public static AtomicBoolean lockModifier = new AtomicBoolean();
+
+
 
     public static Map<Integer,Integer> lockModifierMapX = Collections.synchronizedMap(new HashMap<>());
     public static Map<Integer,Integer> lockModifierMapY = Collections.synchronizedMap(new HashMap<>());

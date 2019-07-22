@@ -8,6 +8,7 @@ class RandomCalc implements Runnable {
     private int modifierx = 0;
     private int modifiery = 0;
 
+    private Map<String,Integer> pointMap;
 
     public RandomCalc(int id) {
         this.id = id;
@@ -21,6 +22,20 @@ class RandomCalc implements Runnable {
                 this.modifiery = Launcher.lockModifierMapY.get(id);
             }
         }
+
+        synchronized (Launcher.lockProcessorsPointMap) {
+
+            if(Launcher.processorsPointMap.containsKey(id)) {
+
+                pointMap = Launcher.processorsPointMap.get(id);
+
+            } else {
+                pointMap = new HashMap<>();
+            }
+
+        }
+
+
     }
 
     public void run() {
@@ -31,7 +46,7 @@ class RandomCalc implements Runnable {
         int high = 251;
 
 
-        Map<String,Integer> pointMap = new HashMap<>();
+        //Map<String,Integer> pointMap = new HashMap<>();
 
         for(int i = 0; i < 10000; i++) {
 
@@ -66,6 +81,10 @@ class RandomCalc implements Runnable {
                 pointMap.put(point,1);
             }
 
+        }
+
+        synchronized (Launcher.lockProcessorsPointMap) {
+            Launcher.processorsPointMap.put(id,pointMap);
         }
 
         synchronized (Launcher.lockModifier) {
