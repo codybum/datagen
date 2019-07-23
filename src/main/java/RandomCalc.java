@@ -59,7 +59,7 @@ class RandomCalc implements Runnable {
         double[] discreteProbabilities = new double[maxsize];
         for(int i = 0; i < maxsize; i++) {
             discreteProbabilities[i] = 1 + bias;
-            bias += 0.01;
+            bias += 0.001;
         }
 
         //discreteProbabilities[99] = 1.0;
