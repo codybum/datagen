@@ -31,7 +31,7 @@ public class Launcher {
 
     public static void main(String args[]) {
 
-        int numsamples = 10000;
+        int numsamples = 1000000;
         int maxsize = 50;
         int cycles = 25;
 
