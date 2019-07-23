@@ -2,6 +2,7 @@ import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 class RandomCalc implements Runnable {
 
@@ -11,6 +12,7 @@ class RandomCalc implements Runnable {
     private int modifiery = 0;
     private int maxsize = 0;
     private int numsamples = 0;
+    private Random random;
 
     private Map<String,Integer> pointMap;
 
@@ -19,6 +21,7 @@ class RandomCalc implements Runnable {
         this.id = id;
         this.maxsize = maxsize;
         this.numsamples = numsamples;
+        random = new Random();
 
         synchronized (Launcher.lockModifier) {
             if(Launcher.lockModifierMapX.containsKey(id)) {
@@ -54,12 +57,13 @@ class RandomCalc implements Runnable {
             numsToGenerate[i] = i + 1;
         }
 
-        double bias = 0.0 * s;
+        //double bias = 0.0 * s;
 
         double[] discreteProbabilities = new double[maxsize];
         for(int i = 0; i < maxsize; i++) {
-            discreteProbabilities[i] = 1 + bias;
-            bias += 0.001;
+            //discreteProbabilities[i] = 1 + random.nextDouble();
+            discreteProbabilities[i] = random.nextDouble();
+            //bias += 0.001;
         }
 
         //discreteProbabilities[99] = 1.0;
