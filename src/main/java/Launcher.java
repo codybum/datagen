@@ -33,11 +33,12 @@ public class Launcher {
 
         int numsamples = 10000;
         int maxsize = 50;
+        int cycles = 25;
 
         System.out.println("height,x,y,set");
 
 
-        for(int s = 1; s <=10; s++) {
+        for(int s = 1; s <=cycles; s++) {
 
             try {
 
