@@ -5,6 +5,7 @@ import java.util.Map;
 
 class RandomCalc implements Runnable {
 
+    private int s;
     private int id;
     private int modifierx = 0;
     private int modifiery = 0;
@@ -13,7 +14,8 @@ class RandomCalc implements Runnable {
 
     private Map<String,Integer> pointMap;
 
-    public RandomCalc(int id, int maxsize, int numsamples) {
+    public RandomCalc(int s, int id, int maxsize, int numsamples) {
+        this.s = s;
         this.id = id;
         this.maxsize = maxsize;
         this.numsamples = numsamples;
@@ -52,12 +54,12 @@ class RandomCalc implements Runnable {
             numsToGenerate[i] = i + 1;
         }
 
-        double bias = 0.0;
+        double bias = 0.0 * s;
 
         double[] discreteProbabilities = new double[maxsize];
         for(int i = 0; i < maxsize; i++) {
             discreteProbabilities[i] = 1 + bias;
-            bias += 0.1;
+            bias += 0.01;
         }
 
         //discreteProbabilities[99] = 1.0;

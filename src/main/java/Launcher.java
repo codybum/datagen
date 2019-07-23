@@ -43,7 +43,7 @@ public class Launcher {
 
                 ExecutorService es = Executors.newCachedThreadPool();
                 for (int i = 0; i < 80; i++)
-                    es.execute(new RandomCalc(i, maxsize, numsamples));
+                    es.execute(new RandomCalc(s, i, maxsize, numsamples));
                 es.shutdown();
 
 
