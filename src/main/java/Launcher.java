@@ -31,6 +31,9 @@ public class Launcher {
 
     public static void main(String args[]) {
 
+        int numsamples = 10000;
+        int maxsize = 50;
+
         System.out.println("height,x,y,set");
 
 
@@ -40,7 +43,7 @@ public class Launcher {
 
                 ExecutorService es = Executors.newCachedThreadPool();
                 for (int i = 0; i < 80; i++)
-                    es.execute(new RandomCalc(i));
+                    es.execute(new RandomCalc(i, maxsize, numsamples));
                 es.shutdown();
 
 
@@ -89,9 +92,9 @@ public class Launcher {
 
 
 
-            for(int y = 1; y <= 50; y++) {
+            for(int y = 1; y <= maxsize; y++) {
 
-                for (int x = 1; x <= 50; x++) {
+                for (int x = 1; x <= maxsize; x++) {
 
                     int result = 0;
                     String point = x + "," + y;

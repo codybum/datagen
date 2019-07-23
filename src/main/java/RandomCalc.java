@@ -2,18 +2,21 @@ import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 class RandomCalc implements Runnable {
 
     private int id;
     private int modifierx = 0;
     private int modifiery = 0;
+    private int maxsize = 0;
+    private int numsamples = 0;
 
     private Map<String,Integer> pointMap;
 
-    public RandomCalc(int id) {
+    public RandomCalc(int id, int maxsize, int numsamples) {
         this.id = id;
+        this.maxsize = maxsize;
+        this.numsamples = numsamples;
 
         synchronized (Launcher.lockModifier) {
             if(Launcher.lockModifierMapX.containsKey(id)) {
@@ -44,14 +47,17 @@ class RandomCalc implements Runnable {
 
 
 
-        int[] numsToGenerate = new int[100];
-        for(int i = 0; i < 100; i++) {
+        int[] numsToGenerate = new int[maxsize];
+        for(int i = 0; i < maxsize; i++) {
             numsToGenerate[i] = i + 1;
         }
 
-        double[] discreteProbabilities = new double[100];
-        for(int i = 0; i < 100; i++) {
-            discreteProbabilities[i] = 0.1;
+        double bias = 0.0;
+
+        double[] discreteProbabilities = new double[maxsize];
+        for(int i = 0; i < maxsize; i++) {
+            discreteProbabilities[i] = 1 + bias;
+            bias += 0.1;
         }
 
         //discreteProbabilities[99] = 1.0;
@@ -62,9 +68,8 @@ class RandomCalc implements Runnable {
         EnumeratedIntegerDistribution distribution =
                 new EnumeratedIntegerDistribution(numsToGenerate, discreteProbabilities);
 
-        int numSamples = 10000;
-        int[] x = distribution.sample(numSamples);
-        int[] y = distribution.sample(numSamples);
+        int[] x = distribution.sample(numsamples);
+        int[] y = distribution.sample(numsamples);
 
         for(int i = 0; i < y.length; i++) {
 
