@@ -14,6 +14,7 @@ class RandomCalc implements Runnable {
     private int numsamples = 0;
     private Random random;
 
+
     private Map<String,Integer> pointMap;
 
     public RandomCalc(int s, int id, int maxsize, int numsamples) {
@@ -22,6 +23,7 @@ class RandomCalc implements Runnable {
         this.maxsize = maxsize;
         this.numsamples = numsamples;
         random = new Random();
+
 
         synchronized (Launcher.lockModifier) {
             if(Launcher.lockModifierMapX.containsKey(id)) {
@@ -82,7 +84,7 @@ class RandomCalc implements Runnable {
                 new EnumeratedIntegerDistribution(numsToGenerate, xdiscreteProbabilities);
 
         EnumeratedIntegerDistribution ydistribution =
-                new EnumeratedIntegerDistribution(numsToGenerate, xdiscreteProbabilities);
+                new EnumeratedIntegerDistribution(numsToGenerate, ydiscreteProbabilities);
 
         int[] x = xdistribution.sample(numsamples);
         int[] y = ydistribution.sample(numsamples);
