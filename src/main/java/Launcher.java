@@ -32,7 +32,7 @@ public class Launcher {
     public static void main(String args[]) {
 
         int numsamples = 1000000;
-        int maxsize = 50;
+        int maxsize = 100;
         int cycles = 25;
 
         System.out.println("height,x,y,set");
