@@ -59,10 +59,17 @@ class RandomCalc implements Runnable {
 
         //double bias = 0.0 * s;
 
-        double[] discreteProbabilities = new double[maxsize];
+        double[] xdiscreteProbabilities = new double[maxsize];
         for(int i = 0; i < maxsize; i++) {
             //discreteProbabilities[i] = 1 + random.nextDouble();
-            discreteProbabilities[i] = random.nextDouble();
+            xdiscreteProbabilities[i] = random.nextDouble();
+            //bias += 0.001;
+        }
+
+        double[] ydiscreteProbabilities = new double[maxsize];
+        for(int i = 0; i < maxsize; i++) {
+            //discreteProbabilities[i] = 1 + random.nextDouble();
+            ydiscreteProbabilities[i] = random.nextDouble();
             //bias += 0.001;
         }
 
@@ -71,11 +78,14 @@ class RandomCalc implements Runnable {
         //System.out.println(numsToGenerate[99]);
         //System.out.println(discreteProbabilities[99]);
 
-        EnumeratedIntegerDistribution distribution =
-                new EnumeratedIntegerDistribution(numsToGenerate, discreteProbabilities);
+        EnumeratedIntegerDistribution xdistribution =
+                new EnumeratedIntegerDistribution(numsToGenerate, xdiscreteProbabilities);
 
-        int[] x = distribution.sample(numsamples);
-        int[] y = distribution.sample(numsamples);
+        EnumeratedIntegerDistribution ydistribution =
+                new EnumeratedIntegerDistribution(numsToGenerate, xdiscreteProbabilities);
+
+        int[] x = xdistribution.sample(numsamples);
+        int[] y = ydistribution.sample(numsamples);
 
         for(int i = 0; i < y.length; i++) {
 
