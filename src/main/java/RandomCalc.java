@@ -56,13 +56,13 @@ class RandomCalc implements Runnable {
 
         //discreteProbabilities[99] = 1.0;
 
-        System.out.println(numsToGenerate[99]);
-        System.out.println(discreteProbabilities[99]);
+        //System.out.println(numsToGenerate[99]);
+        //System.out.println(discreteProbabilities[99]);
 
         EnumeratedIntegerDistribution distribution =
                 new EnumeratedIntegerDistribution(numsToGenerate, discreteProbabilities);
 
-        int numSamples = 1000000;
+        int numSamples = 10000;
         int[] x = distribution.sample(numSamples);
         int[] y = distribution.sample(numSamples);
 
